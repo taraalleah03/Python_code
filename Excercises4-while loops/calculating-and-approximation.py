@@ -2,17 +2,17 @@ import random
 
 #The Monte Carlo simulation is a mathematical technique that predicts possible outcomes of an uncertain event.
 
-p = int(input("How many random points would you like to generate? "))
-r = 0
-while r != p:
-    x = random.randint(1,100)
-    y = random.randint(1,100)
+N = int(input("How many random points would you like to generate? "))
+n = 0
 
-    check = (x*x)+(y*y)
+for i in range(N):
+    x = random.uniform(-1,1)
+    y = random.uniform(-1,1)
 
-    if check < 1:
-        print("(",x,",",y,") points are in the circle")
-    else:
-        print("(",x,",",y,") points are not in the circle")
+    if ((x*x)+(y*y) < 1):
+        n += 1
 
-r += 1
+approx = (n*4)/N
+print("The approximation of pi is", approx)
+
+
