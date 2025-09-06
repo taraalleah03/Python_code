@@ -11,7 +11,7 @@ while i < N:
 
     if ((x*x)+(y*y) < 1):
         n += 1
-i += 1
+    i += 1
 
 approx = (n*4)/N
 print("The approximation of pi is", approx)
