@@ -41,7 +41,7 @@ class Race:
             car.drive(hour)
 
     def print_status(self):
-        print("Race Status:")
+        print("\nRace Status:\n")
         for car in self.cars:
             print(f"{car.rnum}: speed-{car.speed} distance-{car.distance} maxspeed-{car.maxspeed}")
 
@@ -49,7 +49,7 @@ class Race:
         for car in self.cars:
             if car.distance >= self.distance:
                 return True
-            return False # if no car finished the race it returns false
+        return False # if no car finished the race it returns false
 
 cars =[]
 
@@ -62,16 +62,19 @@ derby = Race("Grand Demolition Derby", 8000, cars)
 
 hours = 0
 
+print("WELCOME TO THE RACE! READY SET GO!")
+
 while not derby.race_finished():
     derby.hour_passes()
     hours += 1
+    if hours % 10 == 0:
+        derby.print_status()
 
-print("WELCOME TO THE RACE! READY SET GO!")
-derby.print_status()
+derby.print_status() #print once more at the end of the race
 
 winner = derby.cars[0]
 
 for car in derby.cars:
     if car.distance > winner.distance:
         winner = car
-print("The winner is", winner.rnum, "with", winner.distance, "km traveled!")
+print("\nThe winner is", winner.rnum, "with", winner.distance, "km traveled!")
