@@ -28,6 +28,35 @@ class Car:
         self.distance = self.distance + (self.speed * hour)
         return self.distance
 
+class Race:
+    def __init__(self,name, distance, cars):
+        self.name = name
+        self.distance = distance
+        self.cars = cars
+
+    def hour_passes(self, hour):
+
+        for car in cars:
+            randomspeed = random.randint(-10, 15)  # this is for the car to accelerate
+            car.accelerate(randomspeed)
+            car.drive(1)
+
+    def print_status(self):
+
+        winner = cars[0]
+        for car in cars:
+            if car.distance > winner.distance:
+                winner = car
+        print("The winner is", winner.rnum, "with", winner.distance, "km traveled!")
+
+    def race_finished(self):
+
+        racedone = False
+
+        while not racedone:
+
+            if car.distance > 10000:
+                racedone = True
 #Module 9 section 4
 cars =[]
 
@@ -35,22 +64,3 @@ for x in range(10):
     randommaxspeed = random.randint(100, 200)
     car = Car(f"ABC-{x+1}",randommaxspeed,0,0)
     cars.append(car)
-
-racedone = False
-
-while not racedone:
-
-    for car in cars:
-        randomspeed = random.randint(-10, 15) #this is for the car to accelerate
-        car.accelerate(randomspeed)
-        car.drive(1)
-
-    if car.distance > 10000:
-        racedone = True
-
-winner = cars[0]
-for car in cars:
-    if car.distance > winner.distance:
-        winner = car
-print("The winner is", winner.rnum, "with", winner.distance, "km traveled!")
-
