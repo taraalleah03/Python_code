@@ -19,7 +19,6 @@ class Elevator:
             self.floor_up()
         while self.elevator > floor_togo:
             self.floor_down()
-        print ("You have made it to your destination!")
 
 class Building:
 
@@ -30,16 +29,19 @@ class Building:
             self.elevators.append(new_elevator)
 
     def run_elevator(self, num, destination):
+        print(f"\nElevator{num} is moving to {destination}.")
         self.elevators[num].go_to_floor(destination)
 
     def fire_alarm(self):
-        print("Fire alarm warning! All elevators must move to the bottom floor!")
+        print("\nFire alarm warning! All elevators must move to the bottom floor!\n")
         for floor in self.elevators:
             floor.go_to_floor(floor.bottom)
 
+h = Elevator(0, 7)
+h.go_to_floor(6)
+h.go_to_floor(2)
 building = Building(0, 10, 3)
 building.run_elevator(1, 5)
-#building.run_elevator(10,5)
 building.run_elevator(2,7)
 building.fire_alarm()
 
