@@ -60,10 +60,9 @@ for x in range(10):
 
 derby = Race("Grand Demolition Derby", 8000, cars)
 
-hours = 0
-
 print("WELCOME TO THE RACE! READY SET GO!")
 
+hours = 0
 while not derby.race_finished():
     derby.hour_passes()
     hours += 1
