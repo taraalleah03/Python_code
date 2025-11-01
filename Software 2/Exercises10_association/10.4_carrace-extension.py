@@ -35,19 +35,16 @@ class Race:
         self.cars = cars
 
     def hour_passes(self, hour):
-
-        for car in cars:
+        hour = 1
+        for car in self.cars:
             randomspeed = random.randint(-10, 15)  # this is for the car to accelerate
             car.accelerate(randomspeed)
-            car.drive(1)
+            car.drive(hour)
 
     def print_status(self):
-
-        winner = cars[0]
-        for car in cars:
-            if car.distance > winner.distance:
-                winner = car
-        print("The winner is", winner.rnum, "with", winner.distance, "km traveled!")
+        print("Race Status:")
+        for car in self.cars:
+            print(f"{car.rnum}: {car.speed} {car.distance} {car.maxspeed}")
 
     def race_finished(self):
 
@@ -57,10 +54,27 @@ class Race:
 
             if car.distance > 10000:
                 racedone = True
-#Module 9 section 4
+
 cars =[]
 
 for x in range(10):
     randommaxspeed = random.randint(100, 200)
     car = Car(f"ABC-{x+1}",randommaxspeed,0,0)
     cars.append(car)
+
+derby = Race("Grand Demolition Derby", 8000, cars)
+
+hours = 0
+
+while not derby.race_finished():
+    derby.hour_passes()
+    hours += 1
+
+derby.print_status()
+
+winner = derby.cars[0]
+
+for car in derby.cars:
+    if car.distance > winner.distance:
+        winner = car
+print("The winner is", winner.rnum, "with", winner.distance, "km traveled!")
