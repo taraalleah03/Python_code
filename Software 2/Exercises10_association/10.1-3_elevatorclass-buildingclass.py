@@ -39,7 +39,7 @@ class Building:
 
 h = Elevator(0, 7)
 h.go_to_floor(6)
-h.go_to_floor(2)
+h.go_to_floor(0)
 building = Building(0, 10, 3)
 building.run_elevator(1, 5)
 building.run_elevator(2,7)
