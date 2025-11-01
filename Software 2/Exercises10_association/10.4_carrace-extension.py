@@ -34,8 +34,7 @@ class Race:
         self.distance = distance
         self.cars = cars
 
-    def hour_passes(self, hour):
-        hour = 1
+    def hour_passes(self, hour = 1):
         for car in self.cars:
             randomspeed = random.randint(-10, 15)  # this is for the car to accelerate
             car.accelerate(randomspeed)
@@ -47,13 +46,10 @@ class Race:
             print(f"{car.rnum}: {car.speed} {car.distance} {car.maxspeed}")
 
     def race_finished(self):
-
-        racedone = False
-
-        while not racedone:
-
-            if car.distance > 10000:
-                racedone = True
+        for car in self.cars:
+            if car.distance >= self.distance:
+                return True
+            return False # if no car finished the race it returns false
 
 cars =[]
 
