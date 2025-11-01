@@ -43,7 +43,7 @@ class Race:
     def print_status(self):
         print("Race Status:")
         for car in self.cars:
-            print(f"{car.rnum}: {car.speed} {car.distance} {car.maxspeed}")
+            print(f"{car.rnum}: speed-{car.speed} distance-{car.distance} maxspeed-{car.maxspeed}")
 
     def race_finished(self):
         for car in self.cars:
@@ -66,6 +66,7 @@ while not derby.race_finished():
     derby.hour_passes()
     hours += 1
 
+print("WELCOME TO THE RACE! READY SET GO!")
 derby.print_status()
 
 winner = derby.cars[0]
