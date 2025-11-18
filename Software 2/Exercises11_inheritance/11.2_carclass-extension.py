@@ -8,6 +8,14 @@ class Car:
         self.distance = distance
 
     def accelerate(self, speed):
+
+        self.speed += speed
+        if self.speed < 0:
+            self.speed = 0
+        if self.speed > self.maxspeed:
+            self.speed = self.maxspeed
+
+        """
         if speed < 0:
             minusspeed = speed
             self.speed = self.speed - minusspeed
@@ -23,7 +31,7 @@ class Car:
             else:
                 self.speed = self.maxspeed
                 #print(f"The car has a speed of {self.speed} km/h")
-
+        """
     def drive(self, hour):
         self.distance = self.distance + (self.speed * hour)
         return self.distance
@@ -32,11 +40,13 @@ class ElectricCar(Car):
 
     def __init__(self, rnum, maxspeed, speed, distance,battery):
         self.battery = battery
+        super().__init__(rnum, maxspeed,speed,distance)
 
 class GasolineCar(Car):
 
-    def init(self, rnum, maxspeed, speed, distance, tank):
+    def __init__(self, rnum, maxspeed, speed, distance,tank):
         self.tank = tank
+        super().__init__(rnum, maxspeed,speed,distance)
 
 class Race:
     def __init__(self,name, distance, cars):
@@ -61,6 +71,19 @@ class Race:
                 return True
         return False # if no car finished the race it returns false
 
+electric_car = ElectricCar("ABC-15", 180, 0, 0, 52.5)
+gas_car = GasolineCar("ACD-123", 165, 0, 0,32.3)
+
+electric_car.accelerate(110)
+gas_car.accelerate(120)
+
+electric_car.drive(3)
+gas_car.drive(3)
+
+print("The electric car drove a total of",electric_car.distance,"km.")
+print("The gas car drove a total of",gas_car.distance,"km.")
+
+'''
 cars =[]
 
 for x in range(10):
@@ -87,3 +110,4 @@ for car in derby.cars:
     if car.distance > winner.distance:
         winner = car
 print("\nThe winner is", winner.rnum, "with", winner.distance, "km traveled!")
+'''
