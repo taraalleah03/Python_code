@@ -38,15 +38,15 @@ class Store:
         for food in self.inventory.values():
             food.printinfo()
 
-    def buy_product(self, product):
-        name = product.name.lower()
+    def buy_product(self, product_name):
+        name = product_name.lower()
         if name in self.inventory:
             return self.inventory[name]
         else:
             return None
 
 class Smoothie:
-    def __init__(self, name, ingredients):
+    def __init__(self, name: object, ingredients):
         self.name = name
         self.ingredients = ingredients
 
@@ -66,24 +66,27 @@ class Smoothie:
         print("Total calories:", self.total_calories)
 
 
+prisma = Store()
+
 banan = Fruit("Banana", 15, True)
 brocolli = Vegetable("Brocolli", 20, False)
 apple = Fruit("Apple", 10, True)
 berry = Fruit("Blueberry", 10, True)
 cucumber = Vegetable("Cucumber", 20, False)
 
-prisma = Store()
 prisma.add_product(banan)
 prisma.add_product(brocolli)
 prisma.add_product(apple)
 prisma.add_product(berry)
+
+prisma.show_product()
 
 ingredients = []
 print("Welcome to Prisma! We have the following, choose what you want for your smoothie:")
 
 while True:
     i = input("Add an ingredient to your smoothie (empty to finish): ")
-    if i == '':
+    if i.lower() == "":
         break
 
     product = prisma.buy_product(i)
@@ -96,8 +99,12 @@ while True:
     if len(ingredients) == 0:
         print("No ingredients added.")
 
-    smoothie = Smoothie("Bestest Smoothie")
-
+if ingredients:
+    name = input("what is the smoothie called?: ")
+    smoothie = Smoothie(name, ingredients)
+    smoothie.smoothie_info()
+else:
+    print("cancelled")
 
 
 """
