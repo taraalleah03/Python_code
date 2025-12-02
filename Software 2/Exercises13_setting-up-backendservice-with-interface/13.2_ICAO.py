@@ -15,4 +15,5 @@ connection = mariadb.connect(
 def airport(ICAO):
     cursor = connection.cursor()
 
-    cur
+    sql = "SELECT name, municipality FROM airports WHERE ident=?"
+
