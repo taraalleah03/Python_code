@@ -1,4 +1,4 @@
-from flask import Flask, request, json, jsonify
+from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 @app.route('/prime_number/<int:num>')
