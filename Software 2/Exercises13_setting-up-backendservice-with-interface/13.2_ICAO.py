@@ -14,6 +14,7 @@ connection = mariadb.connect(
 @app.route('/airport/<ident>', strict_slashes=False)
 
 def airport(ident):
+    ident = ident.upper()
     cursor = connection.cursor()
     cursor.execute("SELECT name, municipality FROM airport WHERE ident = ?", (ident,))
     result = cursor.fetchone()
