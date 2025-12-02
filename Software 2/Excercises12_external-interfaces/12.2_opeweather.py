@@ -14,7 +14,7 @@ if response.status_code == 200:
     celsius = temperature - 273.15
 
     print(f"Current weather in {municipality} is: {info['weather'][0]['description']}")
-    print(f"Temperature in Celsius: ", celsius)
+    print(f"Temperature in Celsius: {celsius:.2f} °C")
 
 else:
     print("Error")
