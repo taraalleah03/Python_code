@@ -12,6 +12,7 @@ connection = mariadb.connect(
     autocommit=True)
 
 @app.route('/airport/<ident>', strict_slashes=False)
+
 def airport(ident):
     cursor = connection.cursor()
     cursor.execute("SELECT name, municipality FROM airport WHERE ident = ?", (ident,))
@@ -31,6 +32,7 @@ def airport(ident):
         }
 
     return jsonify(response)
+
 
 if __name__ == '__main__':
     app.run(use_reloader=True, host='127.0.0.1', port=5000)
